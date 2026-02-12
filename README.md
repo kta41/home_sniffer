@@ -27,6 +27,7 @@
 * **🚨 Sistema de Alertas**: Identificación visual de protocolos inseguros (HTTP) y puertos de administración (SSH, RDP).
 * **📑 Vista Detallada**: Los paquetes seleccionados se desglosan en un panel lateral usando formato **Markdown** para mayor claridad.
 * **💾 Persistencia**: Guarda capturas en caliente pulsando una sola tecla para análisis posterior.
+* **⚡ Auto-Privilegios**: El sistema detecta y configura automáticamente los permisos de red (setcap) necesarios.
 
 
 
@@ -47,11 +48,11 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-3. Ejecución (Requiere privilegios de Root):
-Para que el entorno virtual funcione correctamente con sudo:
+3. Ejecución:
 ```bash
-sudo ./venv/bin/python main.py
+./venv/bin/python main.py
 ```
+⚠️Nota de Seguridad: La primera vez, la aplicación detectará que le faltan permisos de red, te pedirá la contraseña para configurar las Linux Capabilities en tu entorno virtual y se relanzará sola.
 
 ⚠️ Nota de Uso: Al seleccionar un paquete con el cursor, recibirás una notificación de "Seguimiento pausado". Esto es normal y permite analizar los datos sin que la tabla se desplace. Pulsa L para volver al flujo en vivo.
 
