@@ -159,6 +159,9 @@ class HomeSnifferApp(App):
             pkt = data["pkt"]
             payload = data["payload"]
 
+            scapy_dump = pkt.show(dump=True)    
+            scapy_dump_fmt = re.sub(r"###\[ (.*) \]###", r"### \1", scapy_dump)
+
             md_content = [
                 "# 📦 ANÁLISIS",
                 f"**Resumen:** `{pkt.summary()}`"
@@ -169,12 +172,11 @@ class HomeSnifferApp(App):
                     f"> 🌐 **DNS:** `{pkt[DNSQR].qname.decode(errors='replace')}`"
                 )
 
-            md_content.append(
-                f"## 📝 RAW\n```http\n{payload.strip() if payload else 'Sin datos'}\n```"
-            )
+            md_content.append("## 🛠 ESTRUCTURA SCAPY")
+            md_content.append(scapy_dump_fmt)
 
             md_content.append(
-                f"## 🛠 SCAPY\n```python\n{pkt.show(dump=True)}\n```"
+                f"## 📝 RAW\n```http\n{payload.strip() if payload else 'Sin datos'}\n```"
             )
 
             self.query_one("#details", Static).update(

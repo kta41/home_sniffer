@@ -11,8 +11,6 @@ excluded_ips:
 excluded_ports:
   - 6443
   - 6444
-  - 10250
-  - 5353
 
 excluded_domains:
   - "ip-api.com"

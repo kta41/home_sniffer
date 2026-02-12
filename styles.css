@@ -92,17 +92,25 @@ Button.active {
     width: 1fr;
 }
 
-#details-scroll {
+ #details-scroll {
+
     border: ascii #00FF00;
+
     width: 1fr;
+
     overflow-y: scroll;
+
 }
+
 
 
 #details {
+
     padding: 1;
+
     overflow-y: auto;         /* el ScrollView se encarga del scroll */
-}
+
+} 
 
 DataTable { 
     border: ascii #00FF00; 
