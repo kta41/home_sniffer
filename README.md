@@ -53,18 +53,17 @@ Para que el entorno virtual funcione correctamente con sudo:
 sudo ./venv/bin/python main.py
 ```
 
+⚠️ Nota de Uso: Al seleccionar un paquete con el cursor, recibirás una notificación de "Seguimiento pausado". Esto es normal y permite analizar los datos sin que la tabla se desplace. Pulsa L para volver al flujo en vivo.
+
 ## 🎮 Controles de la Interfaz
 
-Tecla
-Acción
-* <kbd>ENTER</kbd>
-Ver detalles técnicos del paquete seleccionado.
-* <kbd>S</kbd>
-Guardar captura actual en un archivo .pcap.
-* <kbd>X</kbd>
-Limpiar la tabla y liberar memoria.
-* <kbd>Ctrl + Q</kbd>
-Salir de la aplicación de forma segura.
+| Tecla | Acción |
+| :--- | :--- |
+| <kbd>ENTER</kbd> | **Seleccionar**: Pausa el flujo y desglosa el paquete en el panel lateral. |
+| <kbd>L</kbd> | **Liberar**: Reactiva el seguimiento automático y salta al paquete más nuevo. |
+| <kbd>S</kbd> | **Guardar**: Exporta los últimos 5000 paquetes a un archivo `.pcap`. |
+| <kbd>X</kbd> | **Limpiar**: Vacía la tabla, los logs de sesión y libera la memoria RAM. |
+| <kbd>Ctrl + Q</kbd> | **Salir**: Cierra los hilos de captura y sale de forma segura. |
 
 ---
 
