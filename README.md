@@ -5,6 +5,8 @@
 [![Textual](https://img.shields.io/badge/Textual-TUI_Framework-ff69b4?style=for-the-badge)](https://textual.textualize.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
+![Home_Sniffer Screenshot](./assets/screenshot.png)
+
 **Home_Sniffer** es un analizador de tráfico de red en tiempo real diseñado para ejecutarse directamente en la terminal (TUI). Combina la potencia de inspección de paquetes de `Scapy` con una interfaz moderna y reactiva procesada en `Markdown`.
 
 ---
