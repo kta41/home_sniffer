@@ -8,6 +8,14 @@ Header, Footer {
     color: #00FF00;
 }
 
+/* Estilo para que las teclas en el footer resalten */
+Footer > .footer--key {
+    background: #00FF00;
+    color: black;
+    text-style: bold;
+    padding: 0 1;
+}
+
 #search-bar {
     dock: top;
     margin: 1 1 0 1;
@@ -41,4 +49,27 @@ DataTable {
 DataTable > .datatable--cursor { 
     background: #004400; 
     color: #00FF00; 
+}
+
+/* Estilos para el contenido Markdown en el panel de detalles */
+Markdown H1 {
+    color: #00FF00;
+    text-style: underline bold;
+    background: #004400;
+    margin: 1 0;
+}
+
+Markdown H2 {
+    color: #00FF00;
+    text-style: bold;
+    margin: 1 0;
+}
+
+/* Corrección del error anterior para bloques de código */
+Markdown .code_block {
+    background: #002200;
+    border: ascii #00FF00;
+    color: #00FF00;
+    margin: 1 0;
+    padding: 1;
 }
