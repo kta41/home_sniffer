@@ -1,0 +1,42 @@
+critical_ports:
+  21: "FTP"
+  22: "SSH"
+  23: "TELNET"
+  445: "SMB"
+  3389: "RDP"
+  80: "HTTP"
+
+excluded_ips: 
+
+excluded_ports:
+  - 6443
+  - 6444
+  - 10250
+  - 5353
+
+excluded_domains:
+  - "ip-api.com"
+  - "localhost"
+
+signatures:
+  - pattern: "HTTP/1.1 200"
+    label: "HTTP OK (200)"
+    color: "green"
+  - pattern: "HTTP/1.1 301"
+    label: "HTTP REDIRECT (301)"
+    color: "yellow"
+  - pattern: "HTTP/1.1 302"
+    label: "HTTP REDIRECT (302)"
+    color: "yellow"
+  - pattern: "HTTP/1.1 404"
+    label: "HTTP NOT FOUND (404)"
+    color: "red"
+  - pattern: "GET "
+    label: "HTTP GET"
+    color: "cyan"
+  - pattern: "POST "
+    label: "HTTP POST"
+    color: "orange"
+  - pattern: "OPTIONS "
+    label: "HTTP OPTIONS"
+    color: "blue"

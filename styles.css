@@ -1,73 +1,146 @@
+/* --- CONFIGURACIÓN GLOBAL --- */
+
 Screen {
+    layout: vertical;
     background: black;
     color: #00FF00;
 }
 
-Header, Footer {
-    background: #004400;
-    color: #00FF00;
+/* --- HEADER Y FOOTER --- */
+
+Header {
+    height: 1;
+    background: #002200;
+    color: #ADADAD;
 }
 
-/* Estilo para que las teclas en el footer resalten */
+Footer {
+    background: #002200;
+    color: #ADADAD;
+    height: 3;           /* Prueba con 1, si no sale nada, sube a 2 */
+    text-style: bold;
+    min-height: 1;
+}
+
+/* Resalte de teclas en el footer */
 Footer > .footer--key {
     background: #00FF00;
     color: black;
     text-style: bold;
-    padding: 0 1;
 }
 
+Footer > .footer--highlight {
+    background: #004400;
+    color: #00FF00;
+}
+
+/* --- BARRA DE FILTROS (BOTONES) --- */
+
+#filter-bar {
+    height: 3;
+    margin: 0 1 1 1;
+    background: black;
+}
+
+Button {
+    width: 1fr;
+    background: black;
+    color: #00FF00;
+    border: ascii #00FF00;
+    padding: 0;
+    text-style: bold;
+}
+
+Button:hover {
+    background: #004400;
+}
+
+/* Botón activo */
+Button.active {
+    background: #00FF00;
+    color: black;
+    border: ascii black;
+}
+
+/* Botón ALERTAS */
+#filter-alertas {
+    color: #FF3333;
+    border: ascii #FF3333;
+}
+
+#filter-alertas.active {
+    background: #FF3333;
+    color: black;
+}
+
+/* --- BARRA DE BÚSQUEDA --- */
+
 #search-bar {
-    dock: top;
     margin: 1 1 0 1;
     border: ascii #00FF00;
     background: black;
     color: #00FF00;
 }
 
-Horizontal {
+#main-body {
+    layout: horizontal;
     height: 1fr;
+    margin: 1 1 0 1;
 }
 
-#details { 
-    width: 45%; 
-    height: 100%; 
-    border: ascii #00FF00; 
-    padding: 1; 
-    overflow-y: scroll; 
-    background: black; 
-    color: #00FF00; 
+#table-scroll {
+    width: 1fr;
+}
+
+#details-scroll {
+    border: ascii #00FF00;
+    width: 1fr;
+    overflow-y: scroll;
+}
+
+
+#details {
+    padding: 1;
+    overflow-y: auto;         /* el ScrollView se encarga del scroll */
 }
 
 DataTable { 
-    width: 55%; 
-    height: 100%; 
     border: ascii #00FF00; 
     background: black; 
     color: #00FF00; 
 }
 
-DataTable > .datatable--cursor { 
-    background: #004400; 
-    color: #00FF00; 
+DataTable > .datatable--header {
+    background: #004400;
+    color: #00FF00;
+    text-style: bold;
 }
 
-/* Estilos para el contenido Markdown en el panel de detalles */
+DataTable > .datatable--cursor { 
+    background: #00FF00; 
+    color: black; 
+    text-style: bold;
+}
+
+/* --- CONTENIDO MARKDOWN --- */
+
 Markdown H1 {
     color: #00FF00;
     text-style: underline bold;
     background: #004400;
     margin: 1 0;
+    padding: 0 1;
 }
 
-Markdown H2 {
+Markdown H2, Markdown H3 {
     color: #00FF00;
     text-style: bold;
     margin: 1 0;
 }
 
-/* Corrección del error anterior para bloques de código */
+/* Bloques de código */
 Markdown .code_block {
-    background: #002200;
+    background: #001100;
     border: ascii #00FF00;
     color: #00FF00;
     margin: 1 0;

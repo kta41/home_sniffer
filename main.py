@@ -21,8 +21,9 @@ from ui_app import HomeSnifferApp
 
 if __name__ == "__main__":
     def on_packet(pkt, info, payload):
-        app.handle_new_packet(pkt, info, payload)
+        if 'app' in globals():
+            app.handle_new_packet(pkt, info, payload)
 
-    engine = SnifferEngine(packet_callback=on_packet, log_callback=None)
+    engine = SnifferEngine(packet_callback=on_packet)
     app = HomeSnifferApp(engine)
     app.run()
