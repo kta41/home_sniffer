@@ -19,6 +19,8 @@ import subprocess
 from core_sniffer import SnifferEngine
 from ui_app import HomeSnifferApp
 
+import shlex  # Para manejar comandos de forma segura
+
 def ensure_capabilities():
     if sys.platform != "linux":
         return
@@ -29,24 +31,29 @@ def ensure_capabilities():
         s.close()
     except PermissionError:
         if os.geteuid() != 0:
-            print("\n[!] Permisos de red insuficientes.")
+            print("\n[!] Permisos insuficientes.")
 
-            python_path = sys.executable
+            python_path = os.path.abspath(sys.executable)
 
-            if os.path.islink(python_path):
-                print("[*] Convirtiendo el binario del venv en un archivo real para asignar permisos...")
-                real_bin = os.path.realpath(python_path)
-                subprocess.run(f"sudo cp {real_bin} {python_path}", shell=True)
+            if "Home_sniffer" not in python_path:
+                print("❌ Error: El binario de Python debe estar dentro del proyecto.")
+                sys.exit(1)
 
-            print("[*] Configurando CAP_NET_RAW...")
-            cmd = f"sudo setcap 'cap_net_raw,cap_net_admin+eip' {python_path}"
+            print(f"[*] Configurando CAP_NET_RAW en: {python_path}")
+
+            cmds = [
+                ["sudo", "apt-get", "install", "-y", "libcap2-bin"],
+                ["sudo", "setcap", "cap_net_raw,cap_net_admin+eip", python_path]
+            ]
 
             try:
-                subprocess.run(cmd, shell=True, check=True)
-                print("✅ Permisos configurados. Reiniciando...")
+                for cmd in cmds:
+                    subprocess.run(cmd, check=True)
+
+                print("✅ Hecho. Reiniciando...")
                 os.execv(python_path, [python_path] + sys.argv)
             except Exception as e:
-                print(f"❌ Error: {e}")
+                print(f"❌ Error de seguridad o sistema: {e}")
                 sys.exit(1)
 
 def main():
