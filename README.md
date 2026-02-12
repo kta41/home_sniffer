@@ -60,10 +60,21 @@ sudo ./venv/bin/python main.py
 | Tecla | Acción |
 | :--- | :--- |
 | <kbd>ENTER</kbd> | **Seleccionar**: Pausa el flujo y desglosa el paquete en el panel lateral. |
-| <kbd>L</kbd> | **Liberar**: Reactiva el seguimiento automático y salta al paquete más nuevo. |
-| <kbd>S</kbd> | **Guardar**: Exporta los últimos 5000 paquetes a un archivo `.pcap`. |
-| <kbd>X</kbd> | **Limpiar**: Vacía la tabla, los logs de sesión y libera la memoria RAM. |
-| <kbd>Ctrl + Q</kbd> | **Salir**: Cierra los hilos de captura y sale de forma segura. |
+| <kbd>CTRL+L</kbd> | **Liberar**: Reactiva el seguimiento automático y salta al paquete más nuevo. |
+| <kbd>CTRL+S</kbd> | **Guardar**: Exporta los últimos 5000 paquetes a un archivo `.pcap`. |
+| <kbd>CTRL+X</kbd> | **Limpiar**: Vacía la tabla, los logs de sesión y libera la memoria RAM. |
+| <kbd>Ctrl+Q</kbd> | **Salir**: Cierra los hilos de captura y sale de forma segura. |
+
+## ⚙️ Reglas de Alerta (rules.yaml)
+
+El motor de análisis es totalmente personalizable mediante un archivo YAML. Puedes definir qué patrones de tráfico deben disparar una alerta visual en la interfaz. Lo mejor es que puedes editar este archivo y pulsar <kbd>CTRL+R</kbd> para aplicar los cambios sin detener la captura.
+
+## 📊 Filtrado Dinámico
+La interfaz incluye una barra de herramientas reactiva para gestionar grandes volúmenes de datos:
+Filtros Rápidos: Botones para alternar entre tráfico TCP, UDP, OTROS o ver el histórico completo (ALL).
+Aislamiento de Alertas: Un filtro dedicado para visualizar únicamente los paquetes que coinciden con las reglas del archivo YAML.
+Contadores en Tiempo Real: Estadísticas instantáneas del tráfico capturado por cada protocolo.
+
 
 ---
 
