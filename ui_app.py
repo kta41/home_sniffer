@@ -223,19 +223,14 @@ class HomeSnifferApp(App):
 
 
     def notify_limit(self, message: str, severity: str = "information", timeout: float = 1.0) -> None:
-        # 1. Intentamos obtener las notificaciones del Screen actual
         try:
-            # En Textual, las notificaciones están en 'self.screen._notifications' 
-            # o se pueden sacar del ToastRack
-            toasts = self.query("Toast") # Buscamos todos los widgets de tipo Toast (notificaciones)
+            toasts = self.query("Toast")
             
-            # 2. Si hay 3 o más widgets de notificación visibles
             if len(toasts) >= 3:
-                # Borramos los que sobran (los más antiguos)
                 for i in range(len(toasts) - 2): 
-                    toasts[i].remove() # Eliminamos el widget directamente
+                    toasts[i].remove() 
         except Exception:
-            pass # Si algo falla, que al menos salga la notificación
+            pass 
 
-        # 3. Lanzamos la nueva
+
         self.notify(message, severity=severity, timeout=timeout)
